@@ -10,6 +10,6 @@ class userController
 
     public function __construct()
     {
-        $this->model = new userModel();
+        $this->model = new userModel('localhost', 'inf2pj_04', 'root', '');
     }
 }

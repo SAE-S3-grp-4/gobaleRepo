@@ -1,3 +1,9 @@
+<?php
+require '../controllers/inscriptionController.php';
+$controller = new controllers\inscriptionController();
+$controller->inscription();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,7 +17,7 @@
   <div class="signup-container">
     <h1>Inscription</h1>
     <a href="#" class="back-link">Retour</a>
-    <form action="/register" method="POST">
+    <form action="inscription.php" method="POST">
       <div class="form-group">
         <label for="email">Adresse mail</label>
         <input type="email" id="email" name="email" placeholder="Votre adresse mail" required>
@@ -28,10 +34,10 @@
         <label for="group">Choisir un groupe</label>
         <select id="group" name="group" required>
           <option value="" disabled selected>Choisissez votre groupe</option>
-          <option value="Groupe A">Groupe A</option>
-          <option value="Groupe B">Groupe B</option>
-          <option value="Groupe C">Groupe C</option>
-          <option value="Groupe D">Groupe D</option>
+          <option value="tp A">Groupe A</option>
+          <option value="tp B">Groupe B</option>
+          <option value="tp C">Groupe C</option>
+          <option value="tp D">Groupe D</option>
         </select>
       </div>
       <button type="submit" class="btn-signup">S'inscrire</button>
