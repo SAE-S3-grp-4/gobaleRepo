@@ -1,8 +1,9 @@
 <?php
-
 namespace controllers;
 
 use models\userModel;
+
+require '../models/userModel.php';
 
 class inscriptionController
 {
@@ -14,14 +15,16 @@ class inscriptionController
     }
 
     public function inscription() {
-        if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm-password']) && isset($_POST['group'])) {
-            $email = $_POST['email'];
+        if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm-password']) && isset($_POST['group'])) {
+            $name = htmlspecialchars($_POST['name']);
+            $email = htmlspecialchars($_POST['email']);
             $password = $_POST['password'];
             $confirmPassword = $_POST['confirm-password'];
-            $group = $_POST['group'];
+            $group = htmlspecialchars($_POST['group']);
 
             if ($password === $confirmPassword) {
-                $this->model->addUser($email, $password, $group);
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                $this->model->addUser($name, $email, $hashedPassword, $group);
             } else {
                 echo 'Les mots de passe ne correspondent pas';
             }

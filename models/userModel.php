@@ -26,13 +26,16 @@ class userModel
         return $req->fetch();
     }
 
-    public function addUser($email, $password, $group)
+    public function addUser($name, $email, $password, $group)
     {
-        $req = $this->bdd->prepare('INSERT INTO user (email, password, group) VALUES (:email, :password, :group)');
+        $req = $this->bdd->prepare('INSERT INTO membre (Nom_Membre, Mail_Membre, Mdp_Membre, Grp_Membre, Id_Role, Id_Grade) VALUES (:name, :email, :password, :group, :role, :grade)');
         $req->execute(array(
+            'name' => $name,
             'email' => $email,
             'password' => $password,
-            'group' => $group
+            'group' => $group,
+            'role' => 1,
+            'grade' => null
         ));
     }
 }
